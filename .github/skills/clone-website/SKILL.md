@@ -24,9 +24,32 @@ The target is whatever page `$ARGUMENTS` resolves to. Clone exactly what's visib
 
 If the user provides additional instructions (specific fidelity level, customizations, extra context), honor those over the defaults.
 
+## Phase 0: Authorization & Compliance Gate (MANDATORY — runs before anything else)
+
+This gate runs BEFORE browser automation, extraction, or asset downloads. The README's ToS/impersonation caveats are not enforcement — this gate is. Do not skip it, even when the user says "no questions asked." If any check below fails, STOP and surface the issue to the user before continuing.
+
+1. **Ownership / authorization.** Confirm the user owns the target site or has explicit permission to reproduce it. If ownership is unclear, ask one direct question: "Do you own this site or have permission to clone it?" Acceptable authorized use: migrating a site you own off Webflow/WordPress/Squarespace, recovering lost source for your own live site, cloning a public template explicitly licensed for reuse, or learning/personal study. If the user cannot assert authorization, do not proceed.
+
+2. **robots.txt check.** Fetch `<origin>/robots.txt` and check whether the target path is disallowed for automated agents. If the path is disallowed, report the specific rule and ask the user to confirm they have authorization that overrides it before continuing.
+
+3. **ToS / paywall / login boundary.** Do not clone pages behind authentication, paywalls, or private/gated content. If the target requires a login or sits behind a paywall, stop — cloning gated content is out of scope regardless of credentials.
+
+4. **Impersonation / brand boundary.** Refuse if the intent appears to be phishing, impersonation, or passing off someone else's brand as the user's own. Logos, brand names, and original copy remain the property of their owners; the clone is for migration/learning, not deception.
+
+5. **Record the decision.** Write a one-line authorization record to `docs/research/COMPLIANCE.md` (target URL, authorization basis stated by the user, robots.txt result, timestamp). This is an auditable artifact.
+
+Only after all five checks pass do you proceed to Pre-Flight.
+
 ## Pre-Flight
 
 1. **Browser automation is required.** Check for available browser MCP tools (Chrome MCP, Playwright MCP, Browserbase MCP, Puppeteer MCP, etc.). Use whichever is available — if multiple exist, prefer Chrome MCP. If none are detected, ask the user which browser tool they have and how to connect it. This skill cannot work without browser automation.
+
+   **Design-source & generation MCP tools (optional, use when present).** Before falling back to pure browser extraction, check for these MCP servers and prefer them when the corresponding source is available:
+   - **Google Stitch MCP** (`stitch` server, `https://stitch.googleapis.com/mcp`) — when the user supplies a Stitch project/URL, use Stitch to obtain editable component structure instead of reconstructing purely from the DOM. Stitch output is authoritative for layout/component boundaries; still verify computed CSS against the live site.
+   - **Figma MCP** (`figma` server, Dev Mode MCP or API-based) — when the user supplies a Figma file/frame, extract design tokens, spacing, typography, and asset exports directly from Figma. Figma values override estimated values but should be reconciled with the live site if both exist.
+   - **Higgsfield MCP** (`higgsfield` server, `https://mcp.higgsfield.ai/mcp`) — use to generate replacement imagery when an original asset cannot be downloaded (hotlink-protected, auth-gated, or the user wants royalty-clear substitutes). Generated assets are a fallback, never the default; prefer real downloaded assets. Higgsfield uses OAuth — if not connected, tell the user to sign in via the connector, then continue.
+
+   Detection is graceful: if a design-source MCP is not configured, skip it and use browser extraction. Never hard-fail because Stitch/Figma/Higgsfield are absent — they augment, they are not required.
 2. Parse `$ARGUMENTS` as one or more URLs. Normalize and validate each URL; if any are invalid, ask the user to correct them before proceeding. For each valid URL, verify it is accessible via your browser MCP tool.
 3. Verify the base project builds: `npm run build`. The Next.js + shadcn/ui + Tailwind v4 scaffold should already be in place. If not, tell the user to set it up first.
 4. Create the output directories if they don't exist: `docs/research/`, `docs/research/components/`, `docs/design-references/`, `scripts/`. For multiple clones, also prepare per-site folders like `docs/research/<hostname>/` and `docs/design-references/<hostname>/`.
@@ -116,6 +139,25 @@ The spec file is not optional. It is not a nice-to-have. If you dispatch a build
 ### 9. Build Must Always Compile
 
 Every builder agent must verify `npx tsc --noEmit` passes before finishing. After merging worktrees, you verify `npm run build` passes. A broken build is never acceptable, even temporarily.
+
+### 10. Degrade Gracefully on Animation-Heavy Pages
+
+Some sites layer so many simultaneous effects — parallax, scroll-driven timelines, continuous canvas/WebGL, autoplaying video backgrounds, cursor-followers, heavy stagger sequences — that a naive 1:1 reproduction produces a broken or janky clone, or the extraction pass stalls trying to capture every state. When a page crosses this threshold, do NOT abandon the clone or attempt to reproduce every effect at once. Degrade in tiers.
+
+**Detect the overload condition.** During the Interaction Sweep, flag a section as animation-heavy if any of these hold:
+- More than ~6 independently animating elements in a single viewport
+- Continuous/looping animations driven by `requestAnimationFrame`, canvas, WebGL, or Lottie
+- Scroll-driven timelines controlling more than 3 properties across multiple elements at once
+- Frame rate visibly drops (jank) while scrolling or interacting during the sweep
+
+**Tiered strategy per flagged section:**
+1. **Tier 1 — Structure & static fidelity first.** Build the section pixel-perfect in its resting state (layout, colors, typography, assets). A correct static clone beats a broken animated one. Ship this first so the build always compiles and the section is usable.
+2. **Tier 2 — Reintroduce essential motion.** Add back only the effects that carry meaning or are core to the brand feel (e.g., the hero's primary reveal, a signature hover). Prefer cheap CSS transitions/`@keyframes` and `IntersectionObserver` over JS-driven per-frame loops. Respect `prefers-reduced-motion`.
+3. **Tier 3 — Approximate or substitute the expensive rest.** For continuous WebGL/canvas/particle effects that are impractical to reproduce faithfully, substitute a lighter approximation (CSS gradient animation, a looping `<video>` capture of the effect, or a Higgsfield-generated visual) and document the substitution in the component spec. Never block the clone on a single showpiece effect.
+
+**Record it.** In each flagged section's spec file, add an `## Animation Budget` block listing: effects reproduced faithfully, effects approximated/substituted (and how), and effects intentionally dropped (and why). This keeps the degradation auditable rather than silent.
+
+The goal: an animation-heavy page always yields a complete, compiling, visually-correct clone — with motion added back in priority order — instead of a stalled extraction or a janky mess.
 
 ## Phase 1: Reconnaissance
 
@@ -442,6 +484,8 @@ Before dispatching ANY builder agent, verify you can check every box. If you can
 - [ ] Responsive behavior is documented for at least desktop and mobile
 - [ ] Text content is verbatim from the site, not paraphrased
 - [ ] The builder prompt is under ~150 lines of spec; if over, the section needs to be split
+- [ ] Phase 0 compliance gate passed and `docs/research/COMPLIANCE.md` records the authorization basis
+- [ ] For animation-heavy sections: an `## Animation Budget` block documents what's reproduced, approximated, or dropped (see Principle 10)
 
 ## What NOT to Do
 

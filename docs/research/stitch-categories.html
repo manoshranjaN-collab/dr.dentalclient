@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Klaas - Categories</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#e4e2e2",
+                        "on-secondary-fixed-variant": "#584324",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#1b1c1a",
+                        "error": "#ba1a1a",
+                        "secondary": "#725a39",
+                        "on-error": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#281801",
+                        "outline-variant": "#c4c6cf",
+                        "outline": "#74777f",
+                        "tertiary-fixed": "#e3e2df",
+                        "primary-fixed-dim": "#afc8f0",
+                        "tertiary-container": "#1e1f1d",
+                        "on-tertiary-container": "#868783",
+                        "on-background": "#1b1c1c",
+                        "inverse-primary": "#afc8f0",
+                        "primary-fixed": "#d4e3ff",
+                        "tertiary": "#050605",
+                        "primary-container": "#001f3f",
+                        "surface-dim": "#dbd9d9",
+                        "surface-variant": "#e4e2e2",
+                        "primary": "#000613",
+                        "on-tertiary-fixed-variant": "#464744",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#eae8e7",
+                        "on-secondary-container": "#765f3d",
+                        "inverse-on-surface": "#f2f0f0",
+                        "surface-tint": "#476083",
+                        "background": "#fbf9f8",
+                        "tertiary-fixed-dim": "#c7c7c3",
+                        "surface-container-low": "#f5f3f3",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#fbdbb0",
+                        "surface": "#fbf9f8",
+                        "secondary-fixed-dim": "#e1c299",
+                        "on-surface": "#1b1c1c",
+                        "on-surface-variant": "#43474e",
+                        "inverse-surface": "#303030",
+                        "secondary-fixed": "#feddb3",
+                        "on-primary-container": "#6f88ad",
+                        "on-primary-fixed-variant": "#2f486a",
+                        "on-error-container": "#93000a",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#001c3a",
+                        "surface-container": "#efeded",
+                        "surface-bright": "#fbf9f8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem",
+                        "2xl": "1rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "section-gap": "120px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px",
+                        "unit": "8px",
+                        "container-max": "1200px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["EB Garamond"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["EB Garamond"],
+                        "display-lg-mobile": ["EB Garamond"],
+                        "headline-sm": ["EB Garamond"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+                        "headline-sm": ["24px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- TopNavBar -->
+<div class="bg-primary text-on-primary py-2 px-margin-mobile md:px-margin-desktop flex justify-between items-center text-sm font-label-caps tracking-widest hidden md:flex">
+<a class="hover:text-secondary-fixed transition-colors" href="mailto:hello@klaas.com">hello@klaas.com</a>
+<div class="flex items-center gap-6">
+<a class="hover:text-secondary-fixed transition-colors" href="#">Call us</a>
+<a class="hover:text-secondary-fixed transition-colors" href="#">Book online</a>
+</div>
+</div>
+<nav class="bg-background dark:bg-surface border-b border-outline-variant dark:border-outline docked full-width sticky top-0 z-50">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-4 flex justify-between items-center">
+<a class="flex flex-col hover:opacity-80 transition-opacity" href="#">
+<span class="font-display-lg text-[32px] md:text-[40px] text-primary dark:text-on-surface tracking-tight leading-none">Klaas</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant tracking-[0.2em] uppercase mt-1">Dentist template</span>
+</a>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-outline hover:text-primary transition-colors duration-300" href="#">Home</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-outline hover:text-primary transition-colors duration-300" href="#">Treatments</a>
+<a class="font-label-caps text-label-caps text-primary dark:text-on-surface border-b border-primary pb-1" href="#">Categories</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-outline hover:text-primary transition-colors duration-300" href="#">About us</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-outline hover:text-primary transition-colors duration-300" href="#">Fees</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-outline hover:text-primary transition-colors duration-300" href="#">Blog</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-outline hover:text-primary transition-colors duration-300" href="#">Contact</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="md:hidden flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<button class="hidden flex items-center justify-center text-on-surface-variant font-label-caps text-label-caps uppercase tracking-widest gap-2">
+    Menu
+    <span class="material-symbols-outlined text-[20px]">menu</span>
+</button>
+</div>
+</div>
+</nav>
+<main>
+<!-- Header Block -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-gap flex flex-col items-center text-center">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-[1px] bg-outline-variant"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant tracking-[0.2em] uppercase">Services</span>
+<div class="w-12 h-[1px] bg-outline-variant"></div>
+</div>
+<h1 class="font-display-lg text-display-lg-mobile md:text-[80px] leading-none text-primary mb-8 max-w-4xl">
+                Dentistry
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-12">
+                We are excellent in dental care and treatments for all patients. We take care of you and your family.
+            </p>
+<a class="inline-flex items-center gap-3 bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest px-8 py-4 rounded-full hover:bg-on-surface-variant transition-colors group" href="#categories">
+                Explore
+                <span class="material-symbols-outlined text-[16px] group-hover:translate-y-1 transition-transform">arrow_downward</span>
+</a>
+</section>
+<!-- Categories Listing -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pb-section-gap" id="categories">
+<!-- Row 1: General Dentistry -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-16 items-center mb-section-gap">
+<div class="md:col-span-5 md:col-start-1 flex flex-col justify-center order-2 md:order-1">
+<h2 class="font-headline-md text-[40px] leading-tight text-primary mb-6">General Dentistry</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">
+                        We specialize in helping patients with general treatments and making their smiles look great.
+                    </p>
+<ul class="space-y-4 mb-10">
+<li><a class="font-body-md text-body-md text-on-surface hover:text-secondary flex items-center gap-3 group" href="#"><span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed-dim group-hover:bg-secondary transition-colors"></span> Dental hygiene</a></li>
+<li><a class="font-body-md text-body-md text-on-surface hover:text-secondary flex items-center gap-3 group" href="#"><span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed-dim group-hover:bg-secondary transition-colors"></span> Dental fillings</a></li>
+<li><a class="font-body-md text-body-md text-on-surface hover:text-secondary flex items-center gap-3 group" href="#"><span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed-dim group-hover:bg-secondary transition-colors"></span> Dental crowns</a></li>
+<li><a class="font-body-md text-body-md text-on-surface hover:text-secondary flex items-center gap-3 group" href="#"><span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed-dim group-hover:bg-secondary transition-colors"></span> Dental bridges</a></li>
+</ul>
+<a class="inline-flex items-center gap-4 text-primary font-label-caps text-label-caps uppercase tracking-widest group w-fit" href="#">
+<span class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-[20px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</span>
+                        General Dentistry
+                    </a>
+</div>
+<div class="md:col-span-7 md:col-start-6 order-1 md:order-2 mb-8 md:mb-0">
+<div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-surface-container-high border border-outline-variant">
+<img alt="" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLsBtmENtyMBH_9jsp1NNO5zJB1tMNnpVbaXI8iujhHne-HvDU-KYsZMvc1YE9VakHdK2a8DmEdoxO-XcMoGDdt2GOS-XjIEN55-Lzss21isCLIwqdf-PIVTmxszKD95owpvqiqKBEd8MDGxXE66PsuuCLgdIcmkU1vIQWqXHkFa5tTJQv9wVexOz05y9tT5chHFO7YPiSvqQ1fwTfg6Yz92cOfGFvX9jUzE9qbWxvEpMfz9HVHKNBOYdWc"/>
+</div>
+</div>
+</div>
+<!-- Row 2: Cosmetic Dentistry -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-16 items-center mb-section-gap">
+<div class="md:col-span-7 md:col-start-1 mb-8 md:mb-0">
+<div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-surface-container-high border border-outline-variant">
+<img alt="" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLsR7pk3vQ45Lw0-zk7bGVsTP8Z4Et8xsY5fu4tdlEaQUT51v6iKsPF2NK3WjE1L87QUei58ODgAEOqnIHfEYhpOCXMS4YjhWsHf3bqr2BnvFpfmaN0bwQ1x3c_fFrsMklvjev1EI_xtQR_hU6U4bBwv1pUzmpgoaEz2I-auuI7lmJC4-893emA_GMpl-IwP0SAXUFSe6jcWtXEA-cY189CJNP_QOMvRPYrlvvvVZf3LPJZbxBzCnx1_mw"/>
+</div>
+</div>
+<div class="md:col-span-5 md:col-start-8 flex flex-col justify-center">
+<h2 class="font-headline-md text-[40px] leading-tight text-primary mb-6">Cosmetic Dentistry</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">
+                        Enhance the natural beauty of your smile with our premium cosmetic procedures. Tailored treatments to brighten, align, and perfect your appearance.
+                    </p>
+<ul class="space-y-4 mb-10">
+<li><a class="font-body-md text-body-md text-on-surface hover:text-secondary flex items-center gap-3 group" href="#"><span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed-dim group-hover:bg-secondary transition-colors"></span> Teeth whitening</a></li>
+<li><a class="font-body-md text-body-md text-on-surface hover:text-secondary flex items-center gap-3 group" href="#"><span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed-dim group-hover:bg-secondary transition-colors"></span> Veneers</a></li>
+<li><a class="font-body-md text-body-md text-on-surface hover:text-secondary flex items-center gap-3 group" href="#"><span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed-dim group-hover:bg-secondary transition-colors"></span> Bonding</a></li>
+<li><a class="font-body-md text-body-md text-on-surface hover:text-secondary flex items-center gap-3 group" href="#"><span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed-dim group-hover:bg-secondary transition-colors"></span> Smile makeover</a></li>
+</ul>
+<a class="inline-flex items-center gap-4 text-primary font-label-caps text-label-caps uppercase tracking-widest group w-fit" href="#">
+<span class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-[20px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</span>
+                        Cosmetic Dentistry
+                    </a>
+</div>
+</div>
+<!-- Row 3: Teeth Straightening -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
+<div class="md:col-span-5 md:col-start-1 flex flex-col justify-center order-2 md:order-1">
+<h2 class="font-headline-md text-[40px] leading-tight text-primary mb-6">Teeth Straightening</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">
+                        Modern orthodontic solutions designed for comfort and discretion. Achieve perfect alignment and optimal function with our advanced straightening systems.
+                    </p>
+<ul class="space-y-4 mb-10">
+<li><a class="font-body-md text-body-md text-on-surface hover:text-secondary flex items-center gap-3 group" href="#"><span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed-dim group-hover:bg-secondary transition-colors"></span> Clear aligners</a></li>
+<li><a class="font-body-md text-body-md text-on-surface hover:text-secondary flex items-center gap-3 group" href="#"><span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed-dim group-hover:bg-secondary transition-colors"></span> Traditional braces</a></li>
+<li><a class="font-body-md text-body-md text-on-surface hover:text-secondary flex items-center gap-3 group" href="#"><span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed-dim group-hover:bg-secondary transition-colors"></span> Retainers</a></li>
+<li><a class="font-body-md text-body-md text-on-surface hover:text-secondary flex items-center gap-3 group" href="#"><span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed-dim group-hover:bg-secondary transition-colors"></span> Consultations</a></li>
+</ul>
+<a class="inline-flex items-center gap-4 text-primary font-label-caps text-label-caps uppercase tracking-widest group w-fit" href="#">
+<span class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-[20px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</span>
+                        Teeth Straightening
+                    </a>
+</div>
+<div class="md:col-span-7 md:col-start-6 order-1 md:order-2 mb-8 md:mb-0">
+<div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-surface-container-high border border-outline-variant">
+<img alt="" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLs4Tn4RYbAz4iCm-yqx25Ys0wXsMOyI6zqDsBDqAytjJMfYfB_NEFeX8jtNQEt7PiWPzfgtZCvxnQuLwVno3V808z0Kw88S7mRXRMDYYt4ZEGQ8m-2AH-wKrYM32MrEC4WeRd8aS89mKdjtgzcSqA4BwiJqZPuHW1cnyPXtTjZC0_BDClolGZ8PyFchiYckxwm2UcdBPZQyxuo2C9luop_blkUeBPIIpqKeWaiyVODki5c7t2JjwOcbp9E"/>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary dark:bg-tertiary-container full-width">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-20">
+<div class="lg:col-span-4 flex flex-col gap-8 mb-12 lg:mb-0">
+<a class="font-display-lg text-[40px] text-on-primary hover:opacity-80 transition-opacity" href="#">
+                    Klaas
+                </a>
+<div class="flex flex-col gap-2 font-body-md text-on-primary/70">
+<a class="hover:text-secondary-fixed transition-colors" href="mailto:clinic@klaas.com">clinic@klaas.com</a>
+<a class="hover:text-secondary-fixed transition-colors" href="mailto:new.patients@klaas.com">new.patients@klaas.com</a>
+<a class="hover:text-secondary-fixed transition-colors mt-2" href="tel:33355328786">333 (55) 328 786</a>
+</div>
+<div class="flex gap-4 text-on-primary mt-4">
+<a class="w-10 h-10 rounded-full border border-on-primary/20 flex items-center justify-center hover:bg-secondary-fixed hover:text-primary hover:border-secondary-fixed transition-all" href="#"><span class="material-symbols-outlined text-[20px]">share</span></a>
+<a class="w-10 h-10 rounded-full border border-on-primary/20 flex items-center justify-center hover:bg-secondary-fixed hover:text-primary hover:border-secondary-fixed transition-all" href="#"><span class="material-symbols-outlined text-[20px]">photo_camera</span></a>
+<a class="w-10 h-10 rounded-full border border-on-primary/20 flex items-center justify-center hover:bg-secondary-fixed hover:text-primary hover:border-secondary-fixed transition-all" href="#"><span class="material-symbols-outlined text-[20px]">play_arrow</span></a>
+</div>
+</div>
+<div class="lg:col-span-5 grid grid-cols-2 md:grid-cols-3 gap-8">
+<div class="flex flex-col gap-4">
+<a class="font-label-caps text-label-caps uppercase tracking-widest text-on-primary/70 hover:text-on-primary hover:text-secondary-fixed transition-all duration-200 focus:ring-1 focus:ring-secondary-fixed outline-none w-fit" href="#">Home</a>
+<a class="font-label-caps text-label-caps uppercase tracking-widest text-on-primary/70 hover:text-on-primary hover:text-secondary-fixed transition-all duration-200 focus:ring-1 focus:ring-secondary-fixed outline-none w-fit" href="#">Treatments</a>
+</div>
+<div class="flex flex-col gap-4">
+<a class="font-label-caps text-label-caps uppercase tracking-widest text-on-primary/70 hover:text-on-primary hover:text-secondary-fixed transition-all duration-200 focus:ring-1 focus:ring-secondary-fixed outline-none w-fit" href="#">About us</a>
+<a class="font-label-caps text-label-caps uppercase tracking-widest text-on-primary/70 hover:text-on-primary hover:text-secondary-fixed transition-all duration-200 focus:ring-1 focus:ring-secondary-fixed outline-none w-fit" href="#">Fees</a>
+</div>
+<div class="flex flex-col gap-4">
+<a class="font-label-caps text-label-caps uppercase tracking-widest text-on-primary/70 hover:text-on-primary hover:text-secondary-fixed transition-all duration-200 focus:ring-1 focus:ring-secondary-fixed outline-none w-fit" href="#">Blog</a>
+<a class="font-label-caps text-label-caps uppercase tracking-widest text-on-primary/70 hover:text-on-primary hover:text-secondary-fixed transition-all duration-200 focus:ring-1 focus:ring-secondary-fixed outline-none w-fit" href="#">Contact</a>
+</div>
+</div>
+<div class="lg:col-span-3 flex lg:justify-end mt-12 lg:mt-0">
+<button class="bg-secondary text-on-primary font-label-caps text-label-caps uppercase tracking-widest px-8 py-4 rounded-full hover:bg-secondary-fixed hover:text-primary transition-colors h-fit w-full lg:w-auto">
+        Book online
+    </button>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-6 border-t border-on-primary/10">
+<p class="font-body-md text-sm text-on-primary/50">
+        © 2024 Klaas Dental Clinic. Clinical Excellence.
+    </p>
+</div>
+</footer>
+</body></html>
