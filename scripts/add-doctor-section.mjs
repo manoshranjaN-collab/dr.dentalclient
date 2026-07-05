@@ -12,11 +12,11 @@ const DOC_IMG = "/klaas/drk/dr-krinita.jpg";
 
 const SECTION = `<section id="the-team" class="section"><div class="container"><div class="padding"><style>
 .drk-bio-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:4em;align-items:center}
-.drk-bio-figure{position:relative;width:100%;max-width:25em;margin:0 auto;padding:0 1em 1em 0}
-.drk-bio-accent{position:absolute;top:1.2em;right:0;bottom:0;left:1.2em;background:var(--tan);border-radius:1.25em;z-index:0}
-.drk-bio-img{position:relative;z-index:1;width:100%;height:auto;aspect-ratio:7/8;object-fit:cover;object-position:top center;border-radius:1.25em;display:block;box-shadow:0 26px 55px -28px rgba(3,25,44,.55);animation:drkFloat 7s ease-in-out infinite;transition:transform .5s ease}
-.drk-bio-figure:hover .drk-bio-img{transform:scale(1.03)}
-@keyframes drkFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-.7em)}}
+.drk-bio-figure{position:relative;width:100%;max-width:30em;margin:0 auto;padding:0 1.3em 1.3em 0}
+.drk-bio-accent{position:absolute;top:1.3em;right:0;bottom:0;left:1.3em;background:var(--tan);border-radius:0;z-index:0}
+.drk-bio-img{position:relative;z-index:1;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;object-position:top center;border-radius:0;display:block;box-shadow:0 30px 60px -28px rgba(3,25,44,.6);animation:drkFloat 6s ease-in-out infinite;transition:transform .5s ease}
+.drk-bio-figure:hover .drk-bio-img{transform:translateY(-.9em) scale(1.02)}
+@keyframes drkFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-1em)}}
 @media (prefers-reduced-motion:reduce){.drk-bio-img{animation:none}}
 .drk-bio-eyebrow{letter-spacing:.25em;text-transform:uppercase;color:var(--tan);font-weight:600;font-size:.8em;margin:0 0 1em}
 .drk-bio-role{opacity:.7;margin:.4em 0 1.4em;font-weight:500}
